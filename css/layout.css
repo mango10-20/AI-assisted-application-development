@@ -10,7 +10,7 @@
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(247, 246, 241, 0.88);
+  background: var(--header-bg);
   backdrop-filter: saturate(180%) blur(10px);
   -webkit-backdrop-filter: saturate(180%) blur(10px);
   border-bottom: 1px solid transparent;
@@ -18,7 +18,7 @@
 }
 .site-header.is-scrolled {
   border-bottom-color: var(--line);
-  background: rgba(247, 246, 241, 0.96);
+  background: var(--header-bg-strong);
 }
 
 .header-inner {
@@ -97,6 +97,34 @@
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar { background: transparent; }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar::before { transform: translateY(6px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar::after { transform: translateY(-6px) rotate(-45deg); }
+
+/* 深浅色切换：与导航同处一行，margin-left: auto 把它和导航一起顶到右侧
+   （桌面端品牌在左、切换按钮 + 导航在右；移动端位于汉堡按钮左侧） */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  margin-left: auto;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-2);
+  transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+.theme-toggle:hover {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* 只显示"将要切换到的模式"对应的图标：浅色下是月亮，深色下是太阳 */
+.theme-icon { display: none; }
+.theme-icon-moon { display: block; }
+html[data-theme="dark"] .theme-icon-moon { display: none; }
+html[data-theme="dark"] .theme-icon-sun { display: block; }
 
 /* 锚点跳转时给吸顶导航留出空间 */
 #hero, #works, #about, #contact { scroll-margin-top: calc(var(--header-h) + 14px); }
@@ -184,7 +212,7 @@
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 4px;
-  background: #EDEBE4;
+  background: var(--media-bg);
 }
 .hero-portrait img {
   width: 100%;

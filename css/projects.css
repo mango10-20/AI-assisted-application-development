@@ -55,7 +55,7 @@
 .filter-chip[aria-pressed="true"] {
   background: var(--accent);
   border-color: var(--accent);
-  color: #FFFFFF;
+  color: var(--on-accent);
 }
 
 /* --------------------------------------------------------------------------
@@ -75,7 +75,7 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 4px;
-  background: #EDEBE4;
+  background: var(--media-bg);
 }
 .project-media img {
   width: 100%;

@@ -4,6 +4,8 @@
    ========================================================================== */
 
 :root {
+  color-scheme: light;
+
   /* 颜色：米白纸面 + 近黑文字 + 单一钴蓝强调 */
   --paper: #F7F6F1;
   --surface: #FFFFFF;
@@ -17,6 +19,10 @@
   --accent-soft: #E6F1FB;
   --accent-line: #A8CBEA;
   --accent-ink: #12507F;
+  --on-accent: #FFFFFF;                /* 强调色块之上的文字色 */
+  --media-bg: #EDEBE4;                 /* 配图占位底色（图未加载时可见） */
+  --header-bg: rgba(247, 246, 241, 0.88);        /* 吸顶导航半透明底 */
+  --header-bg-strong: rgba(247, 246, 241, 0.96); /* 滚动后的吸顶导航底 */
 
   /* 字体：标题衬线做杂志感，正文无衬线保证易读 */
   --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, SimSun, serif;
@@ -31,6 +37,31 @@
   --section-y: clamp(68px, 9vw, 140px);
   --header-h: 66px;
   --hairline: 1px solid var(--line);
+}
+
+/* 深色主题：暖调炭灰纸面 + 提亮后的钴蓝。
+   刻意避开纯黑（#000）与高饱和亮色，文字用同源的暖白，
+   与浅色的"米白 + 钴蓝"是同一套色彩关系，只是明度轴反过来。
+   属性由 index.html 头部的内联脚本在首屏渲染前写入，避免白闪。 */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #1B1B19;
+  --surface: #24241F;
+  --ink: #F1EFE7;
+  --ink-2: #C3C0B5;
+  --ink-3: #97948A;
+  --line: #35342F;
+  --line-ink: #5C5A52;   /* 深色下"重分割线"改为提亮，压暗会看不见 */
+  --accent: #6BA5E7;     /* 钴蓝在深底上提亮，保证正文级可读性 */
+  --accent-2: #95C2F2;
+  --accent-soft: #1D2C3E;
+  --accent-line: #37516F;
+  --accent-ink: #A9CBF2;
+  --on-accent: #10161D;  /* 强调色块上的文字：深色主题改用深字 */
+  --media-bg: #26261F;
+  --header-bg: rgba(27, 27, 25, 0.86);
+  --header-bg-strong: rgba(27, 27, 25, 0.95);
 }
 
 *,

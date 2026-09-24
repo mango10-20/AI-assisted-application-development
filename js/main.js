@@ -31,6 +31,7 @@
     /* 3. 装配交互 */
     interactions.initHeader();
     interactions.initMobileNav();
+    interactions.initTheme();
     interactions.initScrollSpy();
 
     var reveal = interactions.initReveal();

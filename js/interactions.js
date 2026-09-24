@@ -3,6 +3,7 @@
    --------------------------------------------------------------------------
    initHeader      吸顶导航滚动后的分割线
    initMobileNav   移动端汉堡菜单
+   initTheme       深色 / 浅色主题切换（选择写入 localStorage）
    initScrollSpy   当前区块在导航中高亮
    initReveal      滚动入场（尊重 prefers-reduced-motion）
    initFilter      按类别筛选项目
@@ -12,6 +13,7 @@
   'use strict';
 
   var MOBILE_BREAKPOINT = 900;
+  var THEME_KEY = 'theme';   /* 与 index.html 头部内联脚本共用同一个键 */
 
   /* ---------------------------------------------------------------- 吸顶导航 */
 
@@ -54,6 +56,60 @@
     window.addEventListener('resize', function () {
       if (window.innerWidth > MOBILE_BREAKPOINT) setOpen(false);
     });
+  }
+
+  /* ------------------------------------------------------- 深色 / 浅色主题 */
+
+  function initTheme() {
+    var root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+    var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+    function isDark() {
+      return root.getAttribute('data-theme') === 'dark';
+    }
+
+    /* 只有明确存过 dark / light 才算"用户手动选过" */
+    function readSaved() {
+      try {
+        var saved = window.localStorage.getItem(THEME_KEY);
+        return saved === 'dark' || saved === 'light' ? saved : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function apply(theme) {
+      root.setAttribute('data-theme', theme);
+      if (!toggle) return;
+      toggle.setAttribute('aria-pressed', String(theme === 'dark'));
+      toggle.setAttribute('aria-label', theme === 'dark' ? '切换到浅色模式' : '切换到深色模式');
+    }
+
+    /* 主题本身已由 index.html 的内联脚本在首屏前写好，这里只同步按钮状态 */
+    apply(isDark() ? 'dark' : 'light');
+
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        var next = isDark() ? 'light' : 'dark';
+        apply(next);
+        try {
+          window.localStorage.setItem(THEME_KEY, next);
+        } catch (error) {
+          /* 写入失败只影响"下次访问是否记得"，本次切换照常生效 */
+        }
+      });
+    }
+
+    /* 未手动选择过时跟随系统切换；手动选过就以用户的选择为准 */
+    if (media) {
+      var onSystemChange = function (event) {
+        if (readSaved()) return;
+        apply(event.matches ? 'dark' : 'light');
+      };
+      if (media.addEventListener) media.addEventListener('change', onSystemChange);
+      else if (media.addListener) media.addListener(onSystemChange);
+    }
   }
 
   /* -------------------------------------------------------- 导航当前区块高亮 */
@@ -207,6 +263,7 @@
   global.PortfolioInteractions = {
     initHeader: initHeader,
     initMobileNav: initMobileNav,
+    initTheme: initTheme,
     initScrollSpy: initScrollSpy,
     initReveal: initReveal,
     initFilter: initFilter
