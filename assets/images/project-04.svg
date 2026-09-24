@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" font-family="ui-monospace, Menlo, Consolas, monospace">
+  <title>智能座舱系统开发 示意图</title>
+  <desc>占位示意图：模块化架构、dlib 面部特征与 YOLOv5 违规行为检测。</desc>
+  <defs>
+    <pattern id="p04" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0 H0 V80" fill="none" stroke="#E2DED4" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="#F1EFE8"/>
+  <rect width="1200" height="900" fill="url(#p04)"/>
+  <text x="1160" y="838" font-size="240" fill="#E7E4DA" text-anchor="end" font-family="Georgia, serif">04</text>
+  <text x="60" y="66" font-size="20" fill="#8A887E" letter-spacing="2">SMART COCKPIT / MODULE ARCHITECTURE</text>
+
+  <!-- 左栏：疲劳监测 · dlib 面部特征 -->
+  <rect x="60" y="100" width="250" height="34" rx="4" fill="#FFFFFF" stroke="#85B7EB" stroke-width="2"/>
+  <text x="78" y="123" font-size="18" fill="#12507F">dlib · EAR / 头姿角</text>
+
+  <ellipse cx="300" cy="290" rx="132" ry="146" fill="none" stroke="#57554C" stroke-width="3" stroke-dasharray="8 10"/>
+  <g fill="none" stroke="#185FA5" stroke-width="3">
+    <rect x="234" y="218" width="62" height="42" rx="9" fill="#E6F1FB" opacity="0.75"/>
+    <rect x="306" y="218" width="62" height="42" rx="9" fill="#E6F1FB" opacity="0.75"/>
+  </g>
+  <g fill="#85B7EB">
+    <circle cx="240" cy="209" r="7"/><circle cx="300" cy="194" r="7"/><circle cx="360" cy="209" r="7"/>
+    <circle cx="300" cy="290" r="7"/>
+    <circle cx="272" cy="340" r="7"/><circle cx="300" cy="329" r="7"/><circle cx="328" cy="340" r="7"/>
+    <circle cx="206" cy="306" r="7"/><circle cx="394" cy="306" r="7"/>
+    <circle cx="225" cy="379" r="7"/><circle cx="375" cy="379" r="7"/>
+  </g>
+  <text x="60" y="486" font-size="16" fill="#8A887E">眨眼频率 / 头部姿态 · 阈值判断与时序分析</text>
+
+  <!-- 右栏：模块化架构 -->
+  <text x="640" y="104" font-size="16" fill="#8A887E">模块化架构 · 数据交互协议与接口规范</text>
+  <g fill="#FFFFFF" stroke="#57554C" stroke-width="2">
+    <rect x="640" y="124" width="500" height="68"/>
+    <rect x="640" y="206" width="500" height="68"/>
+    <rect x="640" y="288" width="500" height="68"/>
+    <rect x="640" y="370" width="500" height="68"/>
+  </g>
+  <g>
+    <text x="664" y="154" font-size="19" fill="#2C2C2A">疲劳驾驶监测</text>
+    <text x="664" y="176" font-size="15" fill="#8A887E">dlib · 声光预警</text>
+    <text x="664" y="236" font-size="19" fill="#2C2C2A">危险驾驶监测</text>
+    <text x="664" y="258" font-size="15" fill="#8A887E">YOLOv5 · 数据集标注与训练</text>
+    <text x="664" y="318" font-size="19" fill="#2C2C2A">语音交互</text>
+    <text x="664" y="340" font-size="15" fill="#8A887E">指令识别</text>
+    <text x="664" y="400" font-size="19" fill="#2C2C2A">手势控制</text>
+    <text x="664" y="422" font-size="15" fill="#8A887E">Mediapipe</text>
+  </g>
+
+  <!-- 通栏：YOLOv5 违规行为检测 -->
+  <rect x="60" y="500" width="1080" height="130" fill="#FFFFFF" stroke="#D5D1C6" stroke-width="2"/>
+  <text x="84" y="532" font-size="19" fill="#2C2C2A">YOLOv5 危险驾驶行为实时检测</text>
+  <g fill="none" stroke="#E24B4A" stroke-width="3" stroke-dasharray="10 8">
+    <rect x="90" y="548" width="310" height="70"/>
+    <rect x="445" y="548" width="310" height="70"/>
+    <rect x="800" y="548" width="310" height="70"/>
+  </g>
+  <g font-size="20" fill="#A32D2D" text-anchor="middle">
+    <text x="245" y="592">喝水</text>
+    <text x="600" y="592">抽烟</text>
+    <text x="955" y="592">手持电话</text>
+  </g>
+
+  <!-- 预警：波形与说明同行分列，避免叠字 -->
+  <text x="60" y="672" font-size="18" fill="#57554C">识别困倦 / 走神状态 → 声光预警</text>
+  <polyline fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linejoin="round"
+    points="500,672 524,658 548,686 572,652 596,692 620,662 644,680 668,654 692,690 716,670 740,678 764,658 788,684 812,664 836,676 860,652 884,680 908,660 932,674 956,656 980,688 1004,666 1028,676 1052,658 1076,682"/>
+  <text x="60" y="732" font-size="16" fill="#57554C">累计交付设备 · 用于多所院校汽车智能网联、车辆工程专业教学</text>
+  <text x="60" y="762" font-size="15" fill="#8A887E">按企业技术标准完成开发并实现量产</text>
+
+  <rect x="60" y="828" width="14" height="14" fill="#185FA5"/>
+  <text x="90" y="842" font-size="24" fill="#2C2C2A">04 / 智能座舱系统开发</text>
+  <text x="1140" y="842" font-size="19" fill="#8A887E" text-anchor="end">1200 x 900</text>
+  <rect x="60" y="864" width="1080" height="1" fill="#D5D1C6"/>
+</svg>

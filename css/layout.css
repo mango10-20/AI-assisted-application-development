@@ -1,0 +1,387 @@
+/* ==========================================================================
+   layout.css —— 导航、首屏、关于我、联系方式、页脚
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   导航：sticky，滚动后出现下分割线
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(247, 246, 241, 0.88);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.site-header.is-scrolled {
+  border-bottom-color: var(--line);
+  background: rgba(247, 246, 241, 0.96);
+}
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: var(--header-h);
+}
+
+.brand { display: flex; flex-direction: column; line-height: 1.3; }
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.brand-role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 42px);
+  font-size: 14.5px;
+}
+.site-nav a {
+  position: relative;
+  padding: 6px 0;
+  color: var(--ink-2);
+  transition: color 0.22s ease;
+}
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.site-nav a:hover,
+.site-nav a.is-active { color: var(--ink); }
+.site-nav a:hover::after,
+.site-nav a.is-active::after { transform: scaleX(1); }
+
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 42px;
+  height: 42px;
+  margin-right: -9px;
+}
+.nav-toggle-bar,
+.nav-toggle-bar::before,
+.nav-toggle-bar::after {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.nav-toggle-bar { top: 50%; }
+.nav-toggle-bar::before { content: ""; left: 0; right: 0; top: -6px; }
+.nav-toggle-bar::after { content: ""; left: 0; right: 0; top: 6px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::before { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::after { transform: translateY(-6px) rotate(-45deg); }
+
+/* 锚点跳转时给吸顶导航留出空间 */
+#hero, #works, #about, #contact { scroll-margin-top: calc(var(--header-h) + 14px); }
+
+/* --------------------------------------------------------------------------
+   首屏：左侧大字 + 通栏细线，右侧状态栏，靠字号落差形成视觉重点
+   -------------------------------------------------------------------------- */
+
+.hero { padding-block: clamp(48px, 8vw, 120px) clamp(40px, 6vw, 96px); }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 310px);
+  column-gap: var(--gap-lg);
+  align-items: start;
+}
+
+.hero-title {
+  position: relative;
+  margin-top: clamp(18px, 2.6vw, 32px);
+  padding-left: clamp(14px, 2.2vw, 32px);
+}
+/* 局部色块：姓名左侧的强调竖条 */
+.hero-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.14em;
+  bottom: 0.2em;
+  width: 4px;
+  background: var(--accent);
+}
+.hero-name {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(56px, 11.4vw, 146px);
+  line-height: 0.98;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.hero-latin {
+  display: block;
+  margin-top: clamp(8px, 1vw, 14px);
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.1vw, 13px);
+  letter-spacing: 0.54em;
+  color: var(--ink-3);
+}
+
+/* 通栏细线把首屏切成上下两层，是杂志封面的常见手法 */
+.hero-lead {
+  margin-top: clamp(24px, 3vw, 38px);
+  padding-top: clamp(20px, 2.4vw, 30px);
+  border-top: 1px solid var(--line-ink);
+  max-width: 30ch;
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 1.9vw, 24px);
+  line-height: 1.62;
+  color: var(--ink);
+}
+.hero-desc {
+  margin-top: clamp(16px, 1.8vw, 22px);
+  max-width: 52ch;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.hero-cta { margin-top: clamp(22px, 2.6vw, 32px); }
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: clamp(8px, 2vw, 26px);
+  padding-left: clamp(0px, 1.6vw, 24px);
+  border-left: 1px solid var(--line);
+}
+
+/* 首屏人像：作为"封面照"置于右栏顶部。
+   处理方式与作品配图保持一致（4px 圆角 + object-fit 裁切），不额外加边框，
+   让照片自身的底色成为一块色块；max-width 是关键——≤1080px 首屏折成单列时，
+   右栏会占满整行，没有这个上限人像会被拉成一张巨幅图。 */
+.hero-portrait {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #EDEBE4;
+}
+.hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 取景偏上，保证头部完整、不裁到发顶 */
+  object-position: 50% 16%;
+}
+
+.status-chip {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 15px;
+  border: 1px solid var(--accent-line);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.status-chip::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.hero-meta { display: grid; }
+.hero-meta-row {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 12px;
+  padding: 11px 0;
+  border-top: var(--hairline);
+}
+.hero-meta-row:last-child { border-bottom: var(--hairline); }
+.hero-meta dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  line-height: 1.9;
+}
+.hero-meta dd { font-size: 14px; color: var(--ink-2); }
+
+/* --------------------------------------------------------------------------
+   关于我
+   -------------------------------------------------------------------------- */
+
+.about {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--line);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: var(--gap-lg);
+  row-gap: clamp(34px, 4vw, 56px);
+  margin-top: clamp(30px, 4vw, 54px);
+}
+
+.about-text p { max-width: 58ch; color: var(--ink-2); }
+.about-text p + p { margin-top: 16px; }
+.about-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.6;
+  color: var(--ink) !important;
+}
+
+.about-side { display: flex; flex-direction: column; gap: clamp(22px, 2.6vw, 32px); }
+.skill-group h3 {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 400;
+}
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.skill-list li {
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--surface);
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.timeline {
+  margin-top: clamp(40px, 5vw, 76px);
+  border-top: 1px solid var(--line-ink);
+}
+.timeline li {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 34px);
+  padding: 17px 0;
+  border-bottom: var(--hairline);
+}
+.timeline time,
+.timeline .timeline-tag {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  line-height: 1.9;
+}
+.timeline p { font-size: 14.5px; color: var(--ink-2); }
+.timeline strong { font-weight: 500; color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   联系方式
+   -------------------------------------------------------------------------- */
+
+.contact {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+.contact-lead {
+  margin-top: clamp(18px, 2vw, 26px);
+  max-width: 46ch;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+.contact-email-wrap { margin-top: clamp(26px, 3vw, 40px); }
+.contact-email {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3.6vw, 46px);
+  font-weight: 600;
+  line-height: 1.3;
+  word-break: break-all;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  transition: border-color 0.28s ease, color 0.28s ease;
+}
+.contact-email:hover { color: var(--accent); border-color: var(--accent); }
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  transition: border-color 0.24s ease, color 0.24s ease, background 0.24s ease;
+}
+.contact-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+}
+.contact-note {
+  margin-top: clamp(18px, 2vw, 26px);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+
+/* --------------------------------------------------------------------------
+   页脚
+   -------------------------------------------------------------------------- */
+
+.site-footer { border-top: 1px solid var(--line-ink); }
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 26px 34px;
+}
+.footer-copy,
+.footer-tech {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.9;
+  color: var(--ink-3);
+}
+.footer-tech { letter-spacing: 0.06em; }

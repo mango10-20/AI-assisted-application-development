@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" font-family="ui-monospace, Menlo, Consolas, monospace">
+  <title>桌面级巡线 ROS 小车 示意图</title>
+  <desc>占位示意图：OpenCV 巡线轨迹提取、ROS2 节点体系与 PID 闭环控制。</desc>
+  <defs>
+    <pattern id="p05" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0 H0 V80" fill="none" stroke="#E2DED4" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="#F1EFE8"/>
+  <rect width="1200" height="900" fill="url(#p05)"/>
+  <text x="1140" y="800" font-size="360" fill="#E7E4DA" text-anchor="end" font-family="Georgia, serif">05</text>
+  <text x="48" y="90" font-size="20" fill="#8A887E" letter-spacing="2">ROS2 HUMBLE / VISION-ONLY LINE FOLLOWING</text>
+  <text x="1152" y="90" font-size="20" fill="#8A887E" text-anchor="end">PLACEHOLDER · 1200 x 900</text>
+
+  <!-- 相机视野 -->
+  <rect x="60" y="140" width="680" height="460" fill="#FFFFFF" stroke="#57554C" stroke-width="3"/>
+  <text x="84" y="176" font-size="16" fill="#8A887E">CAMERA / OpenCV 图像处理流水线</text>
+  <path d="M110 560 C 220 470, 300 570, 400 470 S 560 380, 690 340" fill="none" stroke="#57554C" stroke-width="24" stroke-linecap="round"/>
+  <path d="M110 560 C 220 470, 300 570, 400 470 S 560 380, 690 340" fill="none" stroke="#185FA5" stroke-width="3" stroke-dasharray="14 10"/>
+  <rect x="190" y="400" width="420" height="170" fill="none" stroke="#85B7EB" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="196" y="392" font-size="15" fill="#8A887E">ROI</text>
+  <line x1="200" y1="556" x2="520" y2="450" stroke="#185FA5" stroke-width="2" stroke-dasharray="12 8"/>
+  <line x1="360" y1="500" x2="360" y2="562" stroke="#185FA5" stroke-width="2"/>
+  <polygon points="360,568 354,556 366,556" fill="#185FA5"/>
+  <text x="376" y="540" font-size="15" fill="#12507F">偏移量 → PID</text>
+  <text x="84" y="588" font-size="15" fill="#8A887E">去噪 · 色彩空间转换 · 轮廓检测 · 霍夫直线变换</text>
+
+  <!-- ROS2 节点体系 -->
+  <rect x="780" y="150" width="372" height="84" fill="#FFFFFF" stroke="#57554C" stroke-width="2"/>
+  <text x="804" y="190" font-size="19" fill="#2C2C2A">视觉感知节点</text>
+  <text x="804" y="216" font-size="16" fill="#8A887E">OpenCV · 自适应阈值</text>
+  <line x1="966" y1="234" x2="966" y2="280" stroke="#185FA5" stroke-width="2"/>
+  <polygon points="966,286 960,274 972,274" fill="#185FA5"/>
+  <text x="984" y="264" font-size="15" fill="#12507F">Topic</text>
+  <rect x="780" y="286" width="372" height="84" fill="#FFFFFF" stroke="#57554C" stroke-width="2"/>
+  <text x="804" y="326" font-size="19" fill="#2C2C2A">运动控制节点</text>
+  <text x="804" y="352" font-size="16" fill="#8A887E">PID 闭环 · 左右电机转速</text>
+  <text x="780" y="412" font-size="17" fill="#57554C">Jetson Orin Nano · ROS2 Humble</text>
+  <text x="780" y="438" font-size="17" fill="#57554C">Launch 文件一键启动</text>
+  <text x="780" y="472" font-size="16" fill="#8A887E">校园开放日展出 · 多家媒体报道</text>
+
+  <rect x="48" y="802" width="14" height="14" fill="#185FA5"/>
+  <text x="78" y="816" font-size="26" fill="#2C2C2A">05 / 桌面级巡线 ROS 小车</text>
+  <text x="1152" y="816" font-size="20" fill="#8A887E" text-anchor="end">PLACEHOLDER · 1200 x 900</text>
+  <rect x="48" y="848" width="1104" height="1" fill="#D5D1C6"/>
+</svg>

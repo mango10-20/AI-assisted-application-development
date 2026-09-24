@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" font-family="ui-monospace, Menlo, Consolas, monospace">
+  <title>ADAS 高级驾驶辅助系统仿真实训平台 示意图</title>
+  <desc>占位示意图：可行驶区域分割、道路中心线拟合、四大控制器与毫米波雷达。</desc>
+  <defs>
+    <pattern id="p02" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0 H0 V80" fill="none" stroke="#E2DED4" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="#F1EFE8"/>
+  <rect width="1200" height="900" fill="url(#p02)"/>
+  <text x="1140" y="800" font-size="360" fill="#E7E4DA" text-anchor="end" font-family="Georgia, serif">02</text>
+  <text x="48" y="90" font-size="20" fill="#8A887E" letter-spacing="2">CARLA 0.9.13 / ADAS SIMULATION</text>
+  <text x="48" y="124" font-size="16" fill="#8A887E">YOLOPv2 · 可行驶区域 + 车道线双任务分割（FP16）</text>
+  <text x="1152" y="90" font-size="20" fill="#8A887E" text-anchor="end">PLACEHOLDER · 1200 x 900</text>
+
+  <!-- 罗技 G29 方向盘 -->
+  <circle cx="170" cy="215" r="58" fill="#FFFFFF" stroke="#57554C" stroke-width="5"/>
+  <circle cx="170" cy="215" r="16" fill="#E5E2D9" stroke="#57554C" stroke-width="4"/>
+  <g stroke="#57554C" stroke-width="6" stroke-linecap="round">
+    <line x1="170" y1="199" x2="170" y2="173"/>
+    <line x1="184" y1="223" x2="206" y2="236"/>
+    <line x1="156" y1="223" x2="134" y2="236"/>
+  </g>
+  <text x="260" y="205" font-size="19" fill="#2C2C2A">罗技 G29 方向盘</text>
+  <text x="260" y="231" font-size="17" fill="#8A887E">力反馈 · 手动变速箱逻辑</text>
+
+  <!-- 四大控制器 -->
+  <text x="560" y="145" font-size="17" fill="#8A887E">四大控制器 · 参数化 UI 实时调优</text>
+  <g fill="#FFFFFF" stroke="#57554C" stroke-width="2">
+    <rect x="560" y="160" width="120" height="58"/>
+    <rect x="692" y="160" width="120" height="58"/>
+    <rect x="824" y="160" width="120" height="58"/>
+    <rect x="956" y="160" width="120" height="58"/>
+  </g>
+  <g font-size="20" fill="#2C2C2A" text-anchor="middle">
+    <text x="620" y="197">ACC</text>
+    <text x="752" y="197">AEB</text>
+    <text x="884" y="197">LKA</text>
+    <text x="1016" y="197">BSD</text>
+  </g>
+
+  <!-- ControlMixer 优先级仲裁 -->
+  <text x="560" y="250" font-size="16" fill="#8A887E">ControlMixer 优先级仲裁 · 限幅保护</text>
+  <rect x="560" y="264" width="516" height="56" fill="#E6F1FB" stroke="#185FA5" stroke-width="2"/>
+  <text x="818" y="300" font-size="20" fill="#12507F" text-anchor="middle">AEB ▸ LKA ▸ ACC ▸ 手动</text>
+
+  <!-- 77GHz 毫米波雷达 -->
+  <text x="48" y="596" font-size="17" fill="#57554C">77GHz 毫米波雷达 · 串口采集</text>
+  <g fill="none" stroke="#85B7EB" stroke-width="3">
+    <path d="M149 374 A60 60 0 0 1 149 466"/>
+    <path d="M174 343 A100 100 0 0 1 174 497"/>
+    <path d="M200 313 A140 140 0 0 1 200 527"/>
+  </g>
+  <line x1="110" y1="420" x2="205" y2="360" stroke="#185FA5" stroke-width="2" stroke-dasharray="12 9"/>
+  <circle cx="110" cy="420" r="9" fill="#185FA5"/>
+  <text x="262" y="352" font-size="16" fill="#12507F">BEV 可视化</text>
+
+  <!-- 道路与可行驶区域分割 -->
+  <polygon points="600,400 60,760 1140,760" fill="#E6F1FB" opacity="0.45" stroke="#185FA5" stroke-width="2" stroke-dasharray="14 12"/>
+  <polygon points="600,400 140,760 1060,760" fill="#ECE9E0"/>
+  <line x1="48" y1="400" x2="1152" y2="400" stroke="#D5D1C6" stroke-width="2"/>
+  <g stroke="#D5D1C6" stroke-width="2" stroke-dasharray="14 12">
+    <line x1="600" y1="400" x2="300" y2="760"/>
+    <line x1="600" y1="400" x2="900" y2="760"/>
+  </g>
+  <line x1="600" y1="400" x2="140" y2="760" stroke="#D5D1C6" stroke-width="3"/>
+  <line x1="600" y1="400" x2="1060" y2="760" stroke="#D5D1C6" stroke-width="3"/>
+  <polyline points="600,400 566,480 512,570 448,670 400,760" fill="none" stroke="#185FA5" stroke-width="4" stroke-dasharray="16 12"/>
+  <text x="596" y="690" font-size="17" fill="#12507F">掩膜加权二次拟合 → 道路中心线</text>
+  <text x="596" y="716" font-size="17" fill="#12507F">→ 转向控制量 / 力反馈指令</text>
+
+  <rect x="48" y="802" width="14" height="14" fill="#185FA5"/>
+  <text x="78" y="816" font-size="26" fill="#2C2C2A">02 / ADAS 高级驾驶辅助系统仿真实训平台</text>
+  <text x="1152" y="816" font-size="20" fill="#8A887E" text-anchor="end">PLACEHOLDER · 1200 x 900</text>
+  <rect x="48" y="848" width="1104" height="1" fill="#D5D1C6"/>
+</svg>

@@ -1,0 +1,175 @@
+/* ==========================================================================
+   responsive.css —— 断点适配
+   ≥1081px  桌面：完整杂志式多栏排版
+   ≤1080px  平板：首屏与关于我收成单列
+   ≤900px   折叠导航为汉堡菜单
+   ≤760px   所有项目版式统一折叠为单列（图在上、文在下）
+   ≤520px   小屏微调字号与留白
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ≤1080px：首屏与关于我收为单列
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(28px, 4vw, 44px);
+  }
+  .hero-side {
+    border-left: 0;
+    padding-left: 0;
+    padding-top: clamp(22px, 3vw, 30px);
+    border-top: 1px solid var(--line);
+  }
+  .hero-lead { max-width: 36ch; }
+
+  .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .about-side { flex-direction: row; flex-wrap: wrap; gap: clamp(26px, 4vw, 44px); }
+  .skill-group { flex: 1 1 200px; }
+}
+
+/* --------------------------------------------------------------------------
+   ≤900px：导航折叠为汉堡菜单
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .nav-toggle { display: block; }
+
+  .site-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 4px var(--gutter) 16px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-nav.is-open { display: flex; }
+  .site-nav a {
+    padding: 15px 0;
+    font-size: 16px;
+    color: var(--ink);
+    border-bottom: var(--hairline);
+  }
+  .site-nav a:last-child { border-bottom: 0; }
+  .site-nav a::after { display: none; }
+
+  .timeline li { grid-template-columns: 78px minmax(0, 1fr); }
+
+  .project[data-layout="split-left"],
+  .project[data-layout="split-right"],
+  .project[data-layout="editorial"] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--gap);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ≤760px：所有项目版式统一折叠为单列
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .project[data-layout^="split"],
+  .project[data-layout="editorial"] { display: block; }
+
+  .project[data-layout="feature"] .project-media,
+  .project[data-layout="split-left"] .project-media,
+  .project[data-layout="split-right"] .project-media,
+  .project[data-layout="editorial"] .project-media {
+    /* 移动端不锁定比例，按配图原始比例完整显示，避免竖版图被裁掉大半 */
+    aspect-ratio: auto;
+    margin-top: 0;
+  }
+  .project-media img { height: auto; }
+
+  .project-text,
+  .project[data-layout="editorial"] .project-text { display: block; }
+
+  .project[data-layout="split-left"] .project-text,
+  .project[data-layout="split-right"] .project-text,
+  .project[data-layout="editorial"] .project-text {
+    margin-top: clamp(20px, 4vw, 28px);
+    padding-top: 0;
+  }
+
+  /* 恢复被 feature 变体推到右侧的元信息 */
+  .project[data-layout="feature"] .project-foot {
+    justify-content: flex-start;
+    align-self: auto;
+    padding-bottom: 0;
+    margin-top: 16px;
+  }
+
+  /* feature 的技术栈在单列下改回行内斜杠列表：
+     竖排 8 行会把移动端拉出很长一段，反而比折行更难扫读 */
+  .project[data-layout="feature"] .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin-top: 18px;
+    border-top: 0;
+  }
+  .project[data-layout="feature"] .project-tech::before { display: none; }
+  .project[data-layout="feature"] .project-tech li {
+    padding: 0;
+    border-bottom: 0;
+    line-height: 2;
+  }
+  .project[data-layout="feature"] .project-tech li + li::before {
+    display: inline;
+    content: "/";
+    color: var(--ink-3);
+    margin: 0 9px;
+  }
+
+  .project[data-layout="editorial"] .project-title { font-size: clamp(22px, 5.4vw, 30px); }
+  .project[data-layout="editorial"] .project-summary { max-width: none; }
+
+  /* 计数器改为排在标题下方，避免挤在栏目序号旁边 */
+  .works-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .works-count { padding-bottom: 0; order: 2; }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ≤520px：小屏微调
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 520px) {
+  :root { --gutter: 18px; --section-y: clamp(54px, 14vw, 72px); }
+
+  .hero { padding-block: 34px 52px; }
+  .hero-latin { letter-spacing: 0.4em; }
+  .hero-side { gap: 18px; }
+  .hero-meta-row { grid-template-columns: 54px minmax(0, 1fr); gap: 10px; }
+  .hero-lead { max-width: none; }
+
+  .project { padding-block: 34px; }
+  .project-title { font-size: 21px; }
+  .project-summary { font-size: 14.5px; }
+  .project-tech li { font-size: 11.5px; }
+  .project-tech li + li::before { margin: 0 7px; }
+
+  .about-side { flex-direction: column; }
+  .skill-group { flex: 1 1 auto; }
+
+  .timeline li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .timeline time { line-height: 1.6; }
+
+  .contact-email { font-size: 21px; }
+  .contact-chip { padding: 7px 13px; font-size: 13px; }
+}

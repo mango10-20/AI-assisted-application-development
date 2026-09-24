@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" font-family="ui-monospace, Menlo, Consolas, monospace">
+  <title>击剑动作评分系统 示意图</title>
+  <desc>占位示意图：Mediapipe 姿态关键点、相似度算法与身体指标雷达图。</desc>
+  <defs>
+    <pattern id="p06" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0 H0 V80" fill="none" stroke="#E2DED4" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="#F1EFE8"/>
+  <rect width="1200" height="900" fill="url(#p06)"/>
+  <text x="1160" y="838" font-size="240" fill="#E7E4DA" text-anchor="end" font-family="Georgia, serif">06</text>
+  <text x="60" y="66" font-size="20" fill="#8A887E" letter-spacing="2">FENCING ACTION SCORING / COMPUTER VISION</text>
+
+  <!-- 左栏：Mediapipe 姿态关键点 -->
+  <text x="60" y="104" font-size="16" fill="#8A887E">Mediapipe 姿态关键点 · 归一化坐标</text>
+  <circle cx="200" cy="180" r="26" fill="#E6F1FB" stroke="#57554C" stroke-width="3"/>
+  <g stroke="#57554C" stroke-linecap="round" fill="none">
+    <line x1="200" y1="206" x2="200" y2="352" stroke-width="14"/>
+    <polyline points="200,226 252,292 306,352" stroke-width="12"/>
+    <polyline points="200,226 146,284 164,360" stroke-width="12"/>
+    <polyline points="200,352 256,468" stroke-width="12"/>
+    <polyline points="200,352 146,468" stroke-width="12"/>
+  </g>
+  <g fill="#85B7EB">
+    <circle cx="252" cy="292" r="9"/>
+    <circle cx="146" cy="284" r="9"/>
+    <circle cx="200" cy="352" r="9"/>
+    <circle cx="146" cy="468" r="9"/>
+    <circle cx="256" cy="468" r="9"/>
+  </g>
+  <g fill="none" stroke="#185FA5" stroke-width="3">
+    <circle cx="252" cy="292" r="16"/>
+    <circle cx="146" cy="468" r="16"/>
+  </g>
+  <rect x="300" y="276" width="170" height="32" rx="4" fill="#FFFFFF" stroke="#85B7EB" stroke-width="2"/>
+  <text x="316" y="298" font-size="17" fill="#12507F">手肘 · 权重</text>
+  <rect x="300" y="414" width="170" height="32" rx="4" fill="#FFFFFF" stroke="#85B7EB" stroke-width="2"/>
+  <text x="316" y="436" font-size="17" fill="#12507F">膝盖 · 权重</text>
+
+  <!-- 中栏：身体指标雷达图 -->
+  <text x="660" y="100" font-size="17" fill="#8A887E" text-anchor="middle">身体指标雷达图</text>
+  <g stroke="#D5D1C6" stroke-width="2" fill="none">
+    <polygon points="660,180 774,263 731,397 589,397 546,263"/>
+    <polygon points="660,234 723,280 699,353 621,353 597,280"/>
+    <polygon points="660,266 692,290 680,328 640,328 628,290"/>
+    <g>
+      <line x1="660" y1="300" x2="660" y2="180"/>
+      <line x1="660" y1="300" x2="774" y2="263"/>
+      <line x1="660" y1="300" x2="731" y2="397"/>
+      <line x1="660" y1="300" x2="589" y2="397"/>
+      <line x1="660" y1="300" x2="546" y2="263"/>
+    </g>
+  </g>
+  <polygon points="660,190 728,278 704,360 616,360 592,278" fill="#185FA5" opacity="0.18" stroke="#185FA5" stroke-width="3"/>
+
+  <!-- 右栏：攻击距离趋势图 -->
+  <rect x="856" y="180" width="284" height="130" fill="#FFFFFF" stroke="#D5D1C6" stroke-width="2"/>
+  <text x="880" y="212" font-size="16" fill="#8A887E">攻击距离趋势图</text>
+  <polyline fill="none" stroke="#185FA5" stroke-width="2.5" stroke-linejoin="round"
+    points="880,288 916,266 952,280 988,252 1024,272 1060,244 1096,262 1114,250"/>
+
+  <!-- 通栏：相似度算法 -->
+  <rect x="60" y="500" width="1080" height="160" fill="#FFFFFF" stroke="#57554C" stroke-width="2"/>
+  <text x="84" y="536" font-size="19" fill="#2C2C2A">加权欧氏距离 + 余弦相似度</text>
+  <text x="84" y="576" font-size="20" fill="#12507F">sim = cos &#952; &#183; &#931; w&#7522; d&#7522;</text>
+  <text x="84" y="606" font-size="15" fill="#8A887E">手肘 / 膝盖等关键点分别分配权重</text>
+  <text x="84" y="638" font-size="15" fill="#57554C">用户动作</text>
+  <rect x="170" y="626" width="240" height="16" fill="#185FA5"/>
+  <text x="470" y="638" font-size="15" fill="#57554C">标准动作</text>
+  <rect x="560" y="626" width="300" height="16" fill="#85B7EB"/>
+
+  <!-- 小程序 -->
+  <rect x="60" y="676" width="112" height="130" rx="14" fill="#FFFFFF" stroke="#57554C" stroke-width="3"/>
+  <rect x="100" y="686" width="32" height="6" rx="3" fill="#D5D1C6"/>
+  <g fill="#B4B2A9">
+    <rect x="74" y="704" width="84" height="9" rx="4"/>
+    <rect x="74" y="720" width="56" height="7" rx="3"/>
+    <rect x="74" y="736" width="84" height="9" rx="4"/>
+    <rect x="74" y="752" width="56" height="7" rx="3"/>
+  </g>
+  <rect x="74" y="770" width="84" height="22" rx="5" fill="#185FA5"/>
+  <text x="200" y="712" font-size="18" fill="#2C2C2A">小程序已上线</text>
+  <text x="200" y="740" font-size="16" fill="#8A887E">墨尔本大学青少年击剑队投入使用</text>
+  <text x="200" y="766" font-size="16" fill="#8A887E">输出动作评分 / 关键点数据 / 生物力学指标</text>
+
+  <rect x="60" y="828" width="14" height="14" fill="#185FA5"/>
+  <text x="90" y="842" font-size="24" fill="#2C2C2A">06 / 击剑动作评分系统</text>
+  <text x="1140" y="842" font-size="19" fill="#8A887E" text-anchor="end">1200 x 900</text>
+  <rect x="60" y="864" width="1080" height="1" fill="#D5D1C6"/>
+</svg>
